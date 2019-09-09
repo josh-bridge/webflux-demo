@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -37,7 +36,6 @@ public class EmployeeHandler {
         this.employeeService = employeeService;
     }
 
-    @NonNull
     public Mono<ServerResponse> findById(ServerRequest request) {
         final Mono<Integer> id = Mono.just(getId(request));
 
@@ -46,7 +44,6 @@ public class EmployeeHandler {
         return Response.okOrNotFound(result, Employee.class);
     }
 
-    @NonNull
     public Mono<ServerResponse> getAll(ServerRequest request) {
         final Map<String, String> filterParams = getFilterParams(request);
 
@@ -58,7 +55,6 @@ public class EmployeeHandler {
         return Response.ok(response, EmployeeResponse.class);
     }
 
-    @NonNull
     public Mono<ServerResponse> create(ServerRequest request) {
         final Mono<Employee> employee = request.bodyToMono(Employee.class);
 
@@ -67,7 +63,6 @@ public class EmployeeHandler {
         return Response.ok(result, Employee.class);
     }
 
-    @NonNull
     public Mono<ServerResponse> delete(ServerRequest request) {
         final Mono<Integer> id = Mono.just(getId(request));
 
@@ -76,7 +71,6 @@ public class EmployeeHandler {
         return Response.ok(result);
     }
 
-    @NonNull
     public Mono<ServerResponse> error(ServerRequest request) {
         final Mono<Employee> id = employeeService.error();
 

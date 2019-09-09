@@ -24,15 +24,15 @@ public class Router {
 
     private static final RequestPredicate JSON_CONTENT = contentType(APPLICATION_JSON);
 
-    private static final RequestPredicate GET_ONE = GET("/employees/{id}").and(JSON_CONTENT);
+    private static final RequestPredicate GET_ONE = GET("/employees/{id}");
 
-    private static final RequestPredicate GET_ALL = GET("/employees").and(JSON_CONTENT);
+    private static final RequestPredicate GET_ALL = GET("/employees");
 
-    private static final RequestPredicate CREATE = POST("/employees/{id}").and(JSON_CONTENT).and(ACCEPT_JSON);
+    private static final RequestPredicate CREATE = POST("/employees/{id}");
 
-    private static final RequestPredicate DELETE = DELETE("/employees/{id}").and(JSON_CONTENT);
+    private static final RequestPredicate DELETE = DELETE("/employees/{id}");
 
-    private static final RequestPredicate ERROR = GET("/error").and(JSON_CONTENT);
+    private static final RequestPredicate ERROR = GET("/error");
 
     @Bean
     public RouterFunction<ServerResponse> route(EmployeeHandler employeeHandler) {
